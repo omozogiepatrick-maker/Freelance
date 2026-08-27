@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provaxis — Digital Solutions Studio</title>
+<meta name="description" content="Provaxis builds websites, automation, dashboards and custom software for businesses that want their operations to run better.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10141F;
+    --ink-soft:#1B2133;
+    --paper:#F5F4EF;
+    --paper-dim:#EAE8E0;
+    --line-on-paper:rgba(16,20,31,0.12);
+    --line-on-ink:rgba(245,244,239,0.14);
+    --signal:#4A5FEA;
+    --signal-soft:#DDE1FB;
+    --muted:#5B6072;
+    --muted-on-ink:#9AA1B8;
+    --radius:2px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+  img{max-width:100%;display:block;}
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 24px;
+  }
+  @media(min-width:900px){ .wrap{padding:0 40px;} }
+
+  /* reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(245,244,239,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line-on-paper);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:64px;
+  }
+  .logo{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:1.25rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo .dot{
+    width:7px;height:7px;background:var(--signal);border-radius:50%;
+    display:inline-block;
+  }
+  nav.desktop-links{
+    display:none;
+    gap:32px;
+    align-items:center;
+  }
+  nav.desktop-links a{
+    font-size:0.92rem;
+    color:var(--muted);
+    transition:color 0.15s;
+  }
+  nav.desktop-links a:hover{color:var(--ink);}
+  .nav-cta{
+    display:none;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    background:var(--ink);
+    color:var(--paper);
+    padding:10px 18px;
+    border-radius:var(--radius);
+    white-space:nowrap;
+    transition:background 0.15s;
+  }
+  .nav-cta:hover{background:var(--signal);}
+  @media(min-width:820px){
+    nav.desktop-links{display:flex;}
+    .nav-cta{display:inline-block;}
+  }
+  .burger{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    background:none;border:none;padding:6px;
+  }
+  @media(min-width:820px){ .burger{display:none;} }
+  .burger span{width:22px;height:2px;background:var(--ink);display:block;}
+  .mobile-menu{
+    display:none;
+    flex-direction:column;
+    padding:8px 24px 24px;
+    border-bottom:1px solid var(--line-on-paper);
+    background:var(--paper);
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    padding:14px 0;
+    border-bottom:1px solid var(--line-on-paper);
+    font-size:1rem;
+  }
+  .mobile-menu .nav-cta{
+    display:inline-block;
+    margin-top:16px;
+    text-align:center;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--ink);
+    color:var(--paper);
+    padding:64px 0 56px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    gap:48px;
+  }
+  @media(min-width:960px){
+    .hero-grid{grid-template-columns:1.05fr 0.95fr;align-items:center;gap:24px;}
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.75rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--signal-soft);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow .bar{width:24px;height:1px;background:var(--signal-soft);display:inline-block;}
+  .hero h1{
+    font-size:2.35rem;
+    font-weight:600;
+    max-width:14ch;
+  }
+  @media(min-width:600px){ .hero h1{font-size:3rem;} }
+  @media(min-width:960px){ .hero h1{font-size:3.4rem;} }
+  .hero-sub{
+    margin-top:22px;
+    font-size:1.05rem;
+    color:var(--muted-on-ink);
+    max-width:46ch;
+  }
+  .hero-ctas{
+    margin-top:32px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:14px 22px;
+    border-radius:var(--radius);
+    transition:transform 0.15s ease, background 0.15s, border-color 0.15s;
+  }
+  .btn-primary{
+    background:var(--signal);
+    color:#fff;
+  }
+  .btn-primary:hover{transform:translateY(-1px);background:#3b4fd6;}
+  .btn-ghost-dark{
+    border:1px solid var(--line-on-ink);
+    color:var(--paper);
+  }
+  .btn-ghost-dark:hover{border-color:var(--paper);}
+  .btn-ghost-light{
+    border:1px solid var(--line-on-paper);
+    color:var(--ink);
+  }
+  .btn-ghost-light:hover{border-color:var(--ink);}
+  .btn-dark{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .btn-dark:hover{background:var(--signal);}
+
+  /* hero diagram */
+  .diagram-wrap{
+    position:relative;
+    width:100%;
+    aspect-ratio:1/0.85;
+  }
+  .diagram-wrap svg{width:100%;height:100%;}
+  .node-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    fill:var(--muted-on-ink);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .node-core-label{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    fill:var(--paper);
+  }
+  .flow-line{
+    stroke:var(--signal-soft);
+    stroke-width:1.2;
+    fill:none;
+    opacity:0.55;
+    stroke-dasharray:4 5;
+    animation:dash 3.5s linear infinite;
+  }
+  @keyframes dash{ to{ stroke-dashoffset:-90; } }
+  .node-dot{fill:var(--ink);stroke:var(--signal-soft);stroke-width:1;}
+  .node-core{fill:var(--signal);}
+
+  /* ---------- STRIP ---------- */
+  .strip{
+    border-top:1px solid var(--line-on-ink);
+    background:var(--ink);
+    padding:20px 0;
+  }
+  .strip .wrap{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px 28px;
+    justify-content:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--muted-on-ink);
+  }
+  .strip span.sep{color:var(--signal-soft);}
+
+  /* ---------- SECTION GENERAL ---------- */
+  section{padding:88px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .section-eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.75rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--signal);
+    margin-bottom:14px;
+    display:block;
+  }
+  .section-head h2{
+    font-size:1.9rem;
+    font-weight:600;
+  }
+  @media(min-width:700px){ .section-head h2{font-size:2.3rem;} }
+  .section-head p{
+    margin-top:16px;
+    color:var(--muted);
+    font-size:1.02rem;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1px;
+    background:var(--line-on-paper);
+    border:1px solid var(--line-on-paper);
+  }
+  @media(min-width:640px){ .services-grid{grid-template-columns:1fr 1fr;} }
+  @media(min-width:1000px){ .services-grid{grid-template-columns:repeat(3,1fr);} }
+  .service-card{
+    background:var(--paper);
+    padding:32px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    min-height:230px;
+  }
+  .service-code{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    color:var(--signal);
+    letter-spacing:0.08em;
+  }
+  .service-card h3{
+    font-size:1.15rem;
+    font-weight:600;
+  }
+  .service-card p{
+    color:var(--muted);
+    font-size:0.94rem;
+  }
+  .service-outcome{
+    margin-top:auto;
+    padding-top:14px;
+    border-top:1px solid var(--line-on-paper);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.03em;
+    color:var(--ink);
+  }
+  .service-outcome b{color:var(--signal);font-weight:500;}
+
+  /* ---------- PROBLEM / SOLUTION ---------- */
+  .ps-section{background:var(--ink);color:var(--paper);}
+  .ps-section .section-head p{color:var(--muted-on-ink);}
+  .ps-section .section-eyebrow{color:var(--signal-soft);}
+  .ps-list{display:flex;flex-direction:column;}
+  .ps-row{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+    padding:28px 0;
+    border-top:1px solid var(--line-on-ink);
+  }
+  .ps-row:last-child{border-bottom:1px solid var(--line-on-ink);}
+  @media(min-width:760px){
+    .ps-row{grid-template-columns:1fr 40px 1fr;align-items:center;gap:20px;}
+  }
+  .ps-problem{
+    font-size:1.05rem;
+    color:var(--muted-on-ink);
+  }
+  .ps-arrow{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--signal-soft);
+    font-size:1rem;
+    display:none;
+  }
+  @media(min-width:760px){ .ps-arrow{display:block;text-align:center;} }
+  .ps-solution{
+    font-size:1.05rem;
+    font-weight:500;
+    color:var(--paper);
+  }
+  .ps-solution:before{
+    content:"→ ";
+    color:var(--signal);
+  }
+  @media(min-width:760px){ .ps-solution:before{content:none;} }
+
+  /* ---------- PORTFOLIO ---------- */
+  .work-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  @media(min-width:820px){ .work-grid{grid-template-columns:repeat(3,1fr);} }
+  .work-card{
+    border:1px solid var(--line-on-paper);
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    padding:26px;
+    gap:14px;
+  }
+  .work-tag{
+    align-self:flex-start;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    background:var(--signal-soft);
+    color:var(--signal);
+    padding:5px 9px;
+    border-radius:var(--radius);
+  }
+  .work-card h3{font-size:1.15rem;font-weight:600;}
+  .work-industry{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    color:var(--muted);
+    letter-spacing:0.04em;
+  }
+  .work-field{font-size:0.9rem;color:var(--muted);}
+  .work-field b{color:var(--ink);font-weight:600;display:block;font-size:0.72rem;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px;}
+  .work-tech{
+    margin-top:auto;
+    padding-top:12px;
+    border-top:1px solid var(--line-on-paper);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    color:var(--muted);
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+  }
+  @media(min-width:820px){ .process-grid{grid-template-columns:repeat(4,1fr);} }
+  .process-step{
+    padding:28px 24px 28px 0;
+    border-top:1px solid var(--line-on-paper);
+    position:relative;
+  }
+  @media(min-width:820px){
+    .process-step{border-top:none;border-left:1px solid var(--line-on-paper);padding:0 24px;}
+    .process-step:first-child{border-left:none;padding-left:0;}
+  }
+  .process-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.85rem;
+    color:var(--signal);
+    margin-bottom:14px;
+    display:block;
+  }
+  .process-step h3{font-size:1.1rem;font-weight:600;margin-bottom:10px;}
+  .process-step p{color:var(--muted);font-size:0.92rem;}
+
+  /* ---------- WHY ---------- */
+  .why-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:28px 40px;
+  }
+  @media(min-width:700px){ .why-grid{grid-template-columns:1fr 1fr;} }
+  .why-item{
+    display:flex;
+    gap:16px;
+    padding-bottom:24px;
+    border-bottom:1px solid var(--line-on-paper);
+  }
+  .why-mark{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--signal);
+    flex-shrink:0;
+  }
+  .why-item p{color:var(--muted);font-size:0.98rem;}
+
+  /* ---------- PACKAGES ---------- */
+  .pkg-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  @media(min-width:820px){ .pkg-grid{grid-template-columns:repeat(3,1fr);} }
+  .pkg-card{
+    border:1px solid var(--line-on-paper);
+    padding:32px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .pkg-card.featured{
+    border-color:var(--ink);
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .pkg-card.featured .pkg-desc{color:var(--muted-on-ink);}
+  .pkg-card.featured .pkg-for{color:var(--muted-on-ink);}
+  .pkg-name{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;}
+  .pkg-for{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--signal);
+  }
+  .pkg-desc{color:var(--muted);font-size:0.94rem;flex-grow:1;}
+  .pkg-card .btn{margin-top:6px;justify-content:center;}
+
+  /* ---------- FAQ ---------- */
+  .faq-item{
+    border-top:1px solid var(--line-on-paper);
+  }
+  .faq-item:last-child{border-bottom:1px solid var(--line-on-paper);}
+  .faq-q{
+    width:100%;
+    background:none;
+    border:none;
+    text-align:left;
+    padding:22px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.02rem;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .faq-plus{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--signal);
+    font-size:1.1rem;
+    flex-shrink:0;
+    transition:transform 0.2s;
+  }
+  .faq-item.open .faq-plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.3s ease;
+  }
+  .faq-a-inner{
+    padding-bottom:22px;
+    color:var(--muted);
+    font-size:0.96rem;
+    max-width:65ch;
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+    padding:100px 0;
+  }
+  .final-cta h2{
+    font-size:2.1rem;
+    font-weight:600;
+    max-width:16ch;
+    margin:0 auto;
+  }
+  @media(min-width:700px){ .final-cta h2{font-size:2.7rem;} }
+  .final-cta p{
+    margin-top:18px;
+    color:var(--muted-on-ink);
+    font-size:1.05rem;
+    max-width:44ch;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .final-cta .hero-ctas{justify-content:center;margin-top:34px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+  @media(min-width:960px){ .contact-grid{grid-template-columns:0.85fr 1.15fr;} }
+  .contact-side h2{font-size:1.9rem;font-weight:600;}
+  .contact-side p{margin-top:16px;color:var(--muted);max-width:38ch;}
+  .contact-channel{
+    margin-top:28px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .contact-channel a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.95rem;
+    color:var(--ink);
+    border-bottom:1px solid var(--line-on-paper);
+    padding-bottom:14px;
+    width:fit-content;
+  }
+  .contact-channel .mono{color:var(--signal);font-size:0.7rem;}
+
+  form.brief-form{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  @media(min-width:640px){
+    form.brief-form{grid-template-columns:1fr 1fr;}
+    form.brief-form .full{grid-column:1/-1;}
+  }
+  .field label{
+    display:block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+  .field input,.field select,.field textarea{
+    width:100%;
+    background:var(--paper);
+    border:1px solid var(--line-on-paper);
+    border-radius:var(--radius);
+    padding:13px 14px;
+    font-family:'Inter',sans-serif;
+    font-size:0.95rem;
+    color:var(--ink);
+    transition:border-color 0.15s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;
+    border-color:var(--signal);
+  }
+  .field textarea{resize:vertical;min-height:96px;}
+  .form-submit{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:16px;
+    margin-top:6px;
+  }
+  .form-submit button{
+    border:none;
+  }
+  .form-note{font-size:0.82rem;color:var(--muted);}
+  .form-success{
+    display:none;
+    margin-top:16px;
+    padding:14px 16px;
+    background:var(--signal-soft);
+    color:var(--signal);
+    font-size:0.9rem;
+    border-radius:var(--radius);
+  }
+  .form-success.show{display:block;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:var(--muted-on-ink);
+    padding:48px 0 32px;
+    border-top:1px solid var(--line-on-ink);
+  }
+  .footer-top{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--line-on-ink);
+  }
+  @media(min-width:700px){
+    .footer-top{flex-direction:row;justify-content:space-between;align-items:flex-start;}
+  }
+  .footer-logo{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    color:var(--paper);
+    font-size:1.15rem;
+    display:flex;align-items:center;gap:8px;
+  }
+  .footer-logo .dot{width:6px;height:6px;background:var(--signal);border-radius:50%;}
+  .footer-tag{margin-top:8px;font-size:0.88rem;max-width:32ch;}
+  .footer-links{
+    display:flex;
+    gap:40px;
+    flex-wrap:wrap;
+  }
+  .footer-col{display:flex;flex-direction:column;gap:10px;font-size:0.86rem;}
+  .footer-col .mono{color:var(--signal-soft);font-size:0.66rem;margin-bottom:4px;}
+  .footer-bottom{
+    padding-top:24px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    font-size:0.8rem;
+  }
+  @media(min-width:700px){ .footer-bottom{flex-direction:row;justify-content:space-between;} }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo"><span class="dot"></span>Provaxis</a>
+    <nav class="desktop-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#why">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Start a Project</a>
+    <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#process">Process</a>
+    <a href="#why">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">Start a Project</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="bar"></span>Digital Solutions Studio</span>
+        <h1>We build the digital systems your business runs on.</h1>
+        <p class="hero-sub">Provaxis designs and builds websites, automation, dashboards and custom software — shaped around how your business actually operates, not a template pulled off a shelf.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Start a Project →</a>
+          <a href="#work" class="btn btn-ghost-dark">See What We Build</a>
+        </div>
+      </div>
+      <div class="diagram-wrap" aria-hidden="true">
+        <svg viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg">
+          <!-- connecting lines from problem nodes to core -->
+          <path class="flow-line" d="M40,60 C110,60 130,150 195,175"/>
+          <path class="flow-line" d="M40,175 C100,175 130,175 195,180"/>
+          <path class="flow-line" d="M40,290 C110,290 130,210 195,185"/>
+          <!-- connecting lines from core to solution nodes -->
+          <path class="flow-line" d="M225,175 C290,150 320,80 380,60"/>
+          <path class="flow-line" d="M225,180 C300,180 320,180 380,178"/>
+          <path class="flow-line" d="M225,185 C290,215 320,270 380,295"/>
+
+          <circle class="node-dot" cx="40" cy="60" r="5"/>
+          <text class="node-label" x="52" y="56">Manual process</text>
+          <circle class="node-dot" cx="40" cy="175" r="5"/>
+          <text class="node-label" x="52" y="171">Scattered data</text>
+          <circle class="node-dot" cx="40" cy="290" r="5"/>
+          <text class="node-label" x="52" y="286">No pipeline</text>
+
+          <circle class="node-core" cx="210" cy="180" r="30"/>
+          <text class="node-core-label" x="210" y="184" text-anchor="middle">PX</text>
+
+          <circle class="node-dot" cx="380" cy="60" r="5"/>
+          <text class="node-label" x="368" y="56" text-anchor="end">Working system</text>
+          <circle class="node-dot" cx="380" cy="178" r="5"/>
+          <text class="node-label" x="368" y="174" text-anchor="end">One dashboard</text>
+          <circle class="node-dot" cx="380" cy="295" r="5"/>
+          <text class="node-label" x="368" y="291" text-anchor="end">Steady leads</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap">
+      <span>Websites</span><span class="sep">/</span>
+      <span>Automation</span><span class="sep">/</span>
+      <span>Dashboards</span><span class="sep">/</span>
+      <span>Custom Software</span><span class="sep">/</span>
+      <span>Digital Growth</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">What we build</span>
+        <h2>Six ways we help a business run better.</h2>
+        <p>Each service solves a specific operational problem — not a generic package.</p>
+      </div>
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <span class="service-code">01 / WEB</span>
+          <h3>Websites &amp; Landing Pages</h3>
+          <p>Fast, modern websites and landing pages built to explain what you do clearly and turn visitors into inquiries.</p>
+          <span class="service-outcome"><b>Outcome —</b> More of your traffic turns into leads.</span>
+        </div>
+        <div class="service-card">
+          <span class="service-code">02 / AI</span>
+          <h3>AI &amp; Business Automation</h3>
+          <p>We connect your tools with AI, APIs and workflows so repetitive tasks run on their own.</p>
+          <span class="service-outcome"><b>Outcome —</b> Hours back every week, fewer manual errors.</span>
+        </div>
+        <div class="service-card">
+          <span class="service-code">03 / DASH</span>
+          <h3>Business Dashboards</h3>
+          <p>A single, clear view of the numbers that matter — sales, operations, customers — in one place.</p>
+          <span class="service-outcome"><b>Outcome —</b> Decisions backed by real information, not guesswork.</span>
+        </div>
+        <div class="service-card">
+          <span class="service-code">04 / SW</span>
+          <h3>Custom Software</h3>
+          <p>Internal tools and web applications built around how your team actually works, not a generic template.</p>
+          <span class="service-outcome"><b>Outcome —</b> Software that fits the business, not the other way round.</span>
+        </div>
+        <div class="service-card">
+          <span class="service-code">05 / LEAD</span>
+          <h3>Lead Generation</h3>
+          <p>Systems to find prospects, organize them, and follow up consistently — instead of relying on memory.</p>
+          <span class="service-outcome"><b>Outcome —</b> A pipeline that keeps moving without you chasing it.</span>
+        </div>
+        <div class="service-card">
+          <span class="service-code">06 / GROWTH</span>
+          <h3>Digital Marketing</h3>
+          <p>Practical, focused marketing support built for visibility and leads — not vanity metrics.</p>
+          <span class="service-outcome"><b>Outcome —</b> More of the right people finding you.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM / SOLUTION -->
+  <section class="ps-section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">Where we come in</span>
+        <h2>If this sounds familiar</h2>
+        <p>Most businesses don't need more technology. They need the right system for a specific problem.</p>
+      </div>
+      <div class="ps-list reveal">
+        <div class="ps-row">
+          <p class="ps-problem">Your website isn't converting visitors.</p>
+          <span class="ps-arrow">→</span>
+          <p class="ps-solution">We build clearer, faster, conversion-focused websites.</p>
+        </div>
+        <div class="ps-row">
+          <p class="ps-problem">Your team wastes hours on repetitive tasks.</p>
+          <span class="ps-arrow">→</span>
+          <p class="ps-solution">We automate the workflow.</p>
+        </div>
+        <div class="ps-row">
+          <p class="ps-problem">Your business information is scattered everywhere.</p>
+          <span class="ps-arrow">→</span>
+          <p class="ps-solution">We build dashboards that bring it together.</p>
+        </div>
+        <div class="ps-row">
+          <p class="ps-problem">You don't have a reliable lead pipeline.</p>
+          <span class="ps-arrow">→</span>
+          <p class="ps-solution">We help build a repeatable acquisition system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">Selected work</span>
+        <h2>What this looks like in practice.</h2>
+        <p>These are concept projects that show how we approach a brief — real client work will appear here as it's delivered.</p>
+      </div>
+      <div class="work-grid reveal">
+        <div class="work-card">
+          <span class="work-tag">Concept Project</span>
+          <h3>Northgate Retail</h3>
+          <span class="work-industry">Retail — two-location shop</span>
+          <div class="work-field"><b>Problem</b>Stock counts tracked by hand across two locations, no shared view.</div>
+          <div class="work-field"><b>Built</b>A lightweight inventory and sales dashboard shared across both stores.</div>
+          <div class="work-field"><b>Result</b>Real-time stock visibility, fewer stockouts and overorders.</div>
+          <div class="work-tech">React · Supabase</div>
+        </div>
+        <div class="work-card">
+          <span class="work-tag">Concept Project</span>
+          <h3>Aurora Clinic Booking</h3>
+          <span class="work-industry">Healthcare services</span>
+          <div class="work-field"><b>Problem</b>Appointments booked entirely by phone and WhatsApp, with frequent double-bookings.</div>
+          <div class="work-field"><b>Built</b>An online booking system with automatic reminders.</div>
+          <div class="work-field"><b>Result</b>Fewer missed appointments and less time on scheduling calls.</div>
+          <div class="work-tech">Next.js · Postgres</div>
+        </div>
+        <div class="work-card">
+          <span class="work-tag">Concept Project</span>
+          <h3>Fieldline Ops</h3>
+          <span class="work-industry">Field services</span>
+          <div class="work-field"><b>Problem</b>Jobs assigned and tracked through group chats, with no shared status.</div>
+          <div class="work-field"><b>Built</b>A dashboard to assign, track and close jobs across the team.</div>
+          <div class="work-field"><b>Result</b>Clear visibility into every job's status, for everyone.</div>
+          <div class="work-tech">React · Node · Postgres</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">How we work</span>
+        <h2>A straightforward process, in four steps.</h2>
+      </div>
+      <div class="process-grid reveal">
+        <div class="process-step">
+          <span class="process-num">01</span>
+          <h3>Discover</h3>
+          <p>We understand your business, your goals, and the specific problem you're trying to solve.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">02</span>
+          <h3>Plan</h3>
+          <p>We define the right digital solution — scoped to what actually matters, not everything possible.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">03</span>
+          <h3>Build</h3>
+          <p>We design and develop the solution, keeping you updated at every stage.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">04</span>
+          <h3>Launch &amp; Improve</h3>
+          <p>We deploy, test with real use, and improve based on what we learn.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">Why Provaxis</span>
+        <h2>We build for the business, not just the brief.</h2>
+      </div>
+      <div class="why-grid reveal">
+        <div class="why-item"><span class="why-mark">→</span><p>We think about the business problem first, not just the technology.</p></div>
+        <div class="why-item"><span class="why-mark">→</span><p>We build practical, working solutions — not experiments.</p></div>
+        <div class="why-item"><span class="why-mark">→</span><p>We communicate clearly, in plain language, at every stage.</p></div>
+        <div class="why-item"><span class="why-mark">→</span><p>We avoid unnecessary complexity.</p></div>
+        <div class="why-item"><span class="why-mark">→</span><p>We design for how the business actually operates day to day.</p></div>
+        <div class="why-item"><span class="why-mark">→</span><p>We can start small and grow the system with you over time.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section id="packages">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">Starting points</span>
+        <h2>Start where your business needs it most.</h2>
+        <p>Every project is scoped and quoted individually — these are starting points, not fixed packages.</p>
+      </div>
+      <div class="pkg-grid reveal">
+        <div class="pkg-card">
+          <span class="pkg-for">For businesses that need</span>
+          <span class="pkg-name">Launch</span>
+          <p class="pkg-desc">A strong digital presence — a website or landing page that clearly explains what you do and makes it easy to get in touch.</p>
+          <a href="#contact" class="btn btn-ghost-light">Request a Quote</a>
+        </div>
+        <div class="pkg-card featured">
+          <span class="pkg-for">For businesses that need</span>
+          <span class="pkg-name">Automate</span>
+          <p class="pkg-desc">To eliminate repetitive work — automation and dashboards that bring your operations into one clear system.</p>
+          <a href="#contact" class="btn btn-primary">Request a Quote</a>
+        </div>
+        <div class="pkg-card">
+          <span class="pkg-for">For businesses that need</span>
+          <span class="pkg-name">Build</span>
+          <p class="pkg-desc">A custom digital system — internal tools or applications built specifically around how your business runs.</p>
+          <a href="#contact" class="btn btn-ghost-light">Request a Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">FAQ</span>
+        <h2>Common questions.</h2>
+      </div>
+      <div class="reveal" id="faqList">
+        <div class="faq-item">
+          <button class="faq-q">What types of businesses do you work with?<span class="faq-plus">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Mostly small and growing businesses that need a working digital system — a website, an automated process, or a tool to manage day-to-day operations.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How much does a project cost?<span class="faq-plus">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">It depends on scope. Tell us what you need and we'll give you a clear quote before any work begins — no surprises.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How long does a project take?<span class="faq-plus">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Simple websites or landing pages typically take days to a couple of weeks. Automation and custom software depend on scope, and we'll give you a realistic timeline upfront.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can you work with an existing website?<span class="faq-plus">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. We can improve, extend, or rebuild an existing site rather than starting from zero.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can you automate existing business processes?<span class="faq-plus">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes — that's a core part of what we do. We look at what's repetitive or manual and build a workflow that handles it.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you offer ongoing support?<span class="faq-plus">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Once a project launches, we can continue to support, maintain, and improve it as your needs change.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I start with a small project?<span class="faq-plus">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes — many clients start with one focused project, like a website or a single automation, and expand from there.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I start?<span class="faq-plus">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Fill out the project brief below, or reach out directly by email or WhatsApp. We'll follow up to understand your needs and next steps.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>Have a business problem worth solving?</h2>
+      <p>Tell us what you're trying to improve, build or automate — we'll take it from there.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Start a Project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-side reveal">
+        <span class="section-eyebrow">Contact</span>
+        <h2>Tell us about your project.</h2>
+        <p>Share a few details below and we'll get back to you with next steps — usually within a day or two.</p>
+        <div class="contact-channel">
+          <a href="mailto:omozogiepatrick@gmail.com"><span class="mono">Email</span> omozogiepatrick@gmail.com</a>
+          <a href="https://wa.me/2349129779286" target="_blank" rel="noopener"><span class="mono">WhatsApp</span> +234 912 977 9286</a>
+        </div>
+      </div>
+
+      <form class="brief-form reveal" id="briefForm">
+        <div class="field"><label for="f-name">Name</label><input type="text" id="f-name" required></div>
+        <div class="field"><label for="f-business">Business Name</label><input type="text" id="f-business"></div>
+        <div class="field"><label for="f-email">Email</label><input type="email" id="f-email" required></div>
+        <div class="field"><label for="f-phone">WhatsApp / Phone</label><input type="tel" id="f-phone"></div>
+        <div class="field full"><label for="f-does">What does your business do?</label><textarea id="f-does" rows="2"></textarea></div>
+        <div class="field full"><label for="f-help">What do you need help with?</label><textarea id="f-help" rows="3" required></textarea></div>
+        <div class="field">
+          <label for="f-service">Which service are you interested in?</label>
+          <select id="f-service">
+            <option>Websites &amp; Landing Pages</option>
+            <option>AI &amp; Business Automation</option>
+            <option>Business Dashboards</option>
+            <option>Custom Software</option>
+            <option>Lead Generation</option>
+            <option>Digital Marketing</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-budget">Project Budget</label><input type="text" id="f-budget" placeholder="e.g. flexible, or a range"></div>
+        <div class="field"><label for="f-timeline">Desired Timeline</label><input type="text" id="f-timeline" placeholder="e.g. within 2 weeks"></div>
+        <div class="field"><label for="f-extra">Additional Information</label><input type="text" id="f-extra"></div>
+
+        <div class="full form-submit">
+          <button type="submit" class="btn btn-dark">Send Project Brief →</button>
+          <span class="form-note">Opens your email app with the brief pre-filled.</span>
+        </div>
+        <div class="form-success full" id="formSuccess">Your email app should now be open with the brief ready to send. Prefer WhatsApp? Use the link on the left.</div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><span class="dot"></span>Provaxis</div>
+        <p class="footer-tag">A digital solutions studio building websites, automation, dashboards and custom software for growing businesses.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <span class="mono">Site</span>
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#process">Process</a>
+        </div>
+        <div class="footer-col">
+          <span class="mono">Contact</span>
+          <a href="mailto:omozogiepatrick@gmail.com">omozogiepatrick@gmail.com</a>
+          <a href="https://wa.me/2349129779286" target="_blank" rel="noopener">+234 912 977 9286</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Provaxis. All rights reserved.</span>
+      <span>Digital Solutions Studio</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobile menu
+  const burger = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // faq accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const answer = item.querySelector('.faq-a');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if (isOpen) {
+        item.classList.remove('open');
+        answer.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // contact form -> mailto
+  const form = document.getElementById('briefForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = id => document.getElementById(id).value.trim();
+    const subject = encodeURIComponent('New Project Inquiry — ' + (val('f-business') || val('f-name')));
+    const body = encodeURIComponent(
+`Name: ${val('f-name')}
+Business: ${val('f-business')}
+Email: ${val('f-email')}
+Phone/WhatsApp: ${val('f-phone')}
+
+What the business does:
+${val('f-does')}
+
+What they need help with:
+${val('f-help')}
+
+Service of interest: ${val('f-service')}
+Budget: ${val('f-budget')}
+Timeline: ${val('f-timeline')}
+Additional info: ${val('f-extra')}`
+    );
+    window.location.href = `mailto:omozogiepatrick@gmail.com?subject=${subject}&body=${body}`;
+    success.classList.add('show');
+  });
+</script>
+
+</body>
+</html>
