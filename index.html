@@ -388,47 +388,100 @@
   }
   @media(min-width:760px){ .ps-solution:before{content:none;} }
 
-  /* ---------- PORTFOLIO ---------- */
-  .work-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:24px;
-  }
-  @media(min-width:820px){ .work-grid{grid-template-columns:repeat(3,1fr);} }
-  .work-card{
-    border:1px solid var(--line-on-paper);
-    background:#fff;
+  /* ---------- CASE STUDIES ---------- */
+  .case-list{
     display:flex;
     flex-direction:column;
-    padding:26px;
-    gap:14px;
+    gap:20px;
   }
-  .work-tag{
-    align-self:flex-start;
+  .case-card{
+    border:1px solid var(--line-on-paper);
+    background:#fff;
+  }
+  .case-head{
+    padding:26px 26px 22px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:12px 16px;
+    cursor:pointer;
+  }
+  .case-head h3{font-size:1.2rem;font-weight:600;}
+  .case-industry{
     font-family:'IBM Plex Mono',monospace;
-    font-size:0.66rem;
-    letter-spacing:0.08em;
+    font-size:0.72rem;
+    color:var(--muted);
+    letter-spacing:0.04em;
+  }
+  .case-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.64rem;
+    letter-spacing:0.07em;
     text-transform:uppercase;
     background:var(--signal-soft);
     color:var(--signal);
     padding:5px 9px;
     border-radius:var(--radius);
   }
-  .work-card h3{font-size:1.15rem;font-weight:600;}
-  .work-industry{
+  .case-tag.pending{background:var(--paper-dim);color:var(--muted);}
+  .case-toggle{
+    margin-left:auto;
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--signal);
+    font-size:1.1rem;
+    transition:transform 0.2s;
+    flex-shrink:0;
+  }
+  .case-card.open .case-toggle{transform:rotate(45deg);}
+  .case-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.35s ease;
+  }
+  .case-body-inner{
+    padding:0 26px 30px;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  @media(min-width:760px){ .case-body-inner{grid-template-columns:1fr 1fr;} }
+  .case-col-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--muted);
+    margin-bottom:14px;
+    display:block;
+  }
+  .case-col.fix .case-col-label{color:var(--signal);}
+  .case-col ul{display:flex;flex-direction:column;gap:12px;}
+  .case-col li{
+    font-size:0.92rem;
+    color:var(--ink);
+    padding-left:18px;
+    position:relative;
+  }
+  .case-col.research li:before{
+    content:"—";
+    position:absolute;left:0;color:var(--muted);
+  }
+  .case-col.fix li:before{
+    content:"→";
+    position:absolute;left:0;color:var(--signal);
+  }
+  .case-source{
     font-family:'IBM Plex Mono',monospace;
     font-size:0.72rem;
     color:var(--muted);
-    letter-spacing:0.04em;
-  }
-  .work-field{font-size:0.9rem;color:var(--muted);}
-  .work-field b{color:var(--ink);font-weight:600;display:block;font-size:0.72rem;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px;}
-  .work-tech{
-    margin-top:auto;
-    padding-top:12px;
+    padding:0 26px 26px;
     border-top:1px solid var(--line-on-paper);
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.7rem;
+    padding-top:18px;
+    margin:0 26px;
+  }
+  .case-pending-body{
+    padding:0 26px 26px;
+    font-size:0.9rem;
     color:var(--muted);
   }
 
@@ -967,42 +1020,98 @@
     </div>
   </section>
 
-  <!-- WORK -->
+  <!-- WORK / CASE STUDIES -->
   <section id="work">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="section-eyebrow">Selected work</span>
-        <h2>What this looks like in practice.</h2>
-        <p>These are concept projects that show how we approach a brief — real client work will appear here as it's delivered.</p>
+        <span class="section-eyebrow">Case studies</span>
+        <h2>The research behind the rebuild.</h2>
+        <p>Before we design anything, we audit what's actually happening — the broken fields, the manual workarounds, the tools that don't talk to each other. Here's that process, in the open.</p>
       </div>
-      <div class="work-grid reveal">
-        <div class="work-card">
-          <span class="work-tag">Concept Project</span>
-          <h3>Northgate Retail</h3>
-          <span class="work-industry">Retail — two-location shop</span>
-          <div class="work-field"><b>Problem</b>Stock counts tracked by hand across two locations, no shared view.</div>
-          <div class="work-field"><b>Built</b>A lightweight inventory and sales dashboard shared across both stores.</div>
-          <div class="work-field"><b>Result</b>Real-time stock visibility, fewer stockouts and overorders.</div>
-          <div class="work-tech">React · Supabase</div>
+
+      <div class="case-list reveal" id="caseList">
+
+        <div class="case-card open" id="caseSeeLagos">
+          <div class="case-head">
+            <div>
+              <h3>SEE Lagos</h3>
+              <span class="case-industry">Restaurant &amp; lounge — Lekki Phase 1, Lagos</span>
+            </div>
+            <span class="case-tag">Live Audit</span>
+            <span class="case-toggle">+</span>
+          </div>
+          <div class="case-body">
+            <div class="case-body-inner">
+              <div class="case-col research">
+                <span class="case-col-label">What the research found</span>
+                <ul>
+                  <li>Empty fields on the live menu page — "Avg cooking time" and "Avg cost of a dish" display with no value filled in.</li>
+                  <li>Menu prices carry odd kobo decimals (₦28,999.99, ₦26,500.01) — a sign of a bulk import or currency-conversion error, not intentional pricing.</li>
+                  <li>Item names and category tabs get cut off mid-word on smaller screens — the template wasn't built for their actual content length.</li>
+                  <li>Their own site lists hours as 00:00–23:59, while their Google Business Profile says Closed / Opens 8am — two sources of truth disagreeing.</li>
+                  <li>Presence is split across Google, Instagram, a separate seelifestyle.ng domain, a third-party QR-menu tool, Glovo, and WhatsApp — none connected.</li>
+                  <li>A manual banner asks guests to "pay ONLY into the company's bank account" — a patch for fraud risk, not a fixed payment flow.</li>
+                </ul>
+              </div>
+              <div class="case-col fix">
+                <span class="case-col-label">What needs to change</span>
+                <ul>
+                  <li>One menu system with real content limits, so names and prices display fully on every screen size.</li>
+                  <li>A single source of truth for hours and menu pricing, synced everywhere it's shown instead of edited in two places.</li>
+                  <li>An integrated checkout (Paystack or Flutterwave) to replace manual bank transfers and the fraud-warning banner.</li>
+                  <li>One order inbox instead of orders scattered across WhatsApp, Glovo and Instagram DMs.</li>
+                  <li>Reviews and photos pulled live from Google instead of managed by hand.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="case-source">Source: public listings on Google Business Profile and the live menu at app.mulle.ee/qr/seelifest, reviewed August 2026.</div>
         </div>
-        <div class="work-card">
-          <span class="work-tag">Concept Project</span>
-          <h3>Aurora Clinic Booking</h3>
-          <span class="work-industry">Healthcare services</span>
-          <div class="work-field"><b>Problem</b>Appointments booked entirely by phone and WhatsApp, with frequent double-bookings.</div>
-          <div class="work-field"><b>Built</b>An online booking system with automatic reminders.</div>
-          <div class="work-field"><b>Result</b>Fewer missed appointments and less time on scheduling calls.</div>
-          <div class="work-tech">Next.js · Postgres</div>
+
+        <div class="case-card">
+          <div class="case-head">
+            <div>
+              <h3>Maple Lagos</h3>
+              <span class="case-industry">Restaurant</span>
+            </div>
+            <span class="case-tag pending">Research in progress</span>
+          </div>
+          <div class="case-pending-body">Audit findings and proposed fixes are being documented — check back soon.</div>
         </div>
-        <div class="work-card">
-          <span class="work-tag">Concept Project</span>
-          <h3>Fieldline Ops</h3>
-          <span class="work-industry">Field services</span>
-          <div class="work-field"><b>Problem</b>Jobs assigned and tracked through group chats, with no shared status.</div>
-          <div class="work-field"><b>Built</b>A dashboard to assign, track and close jobs across the team.</div>
-          <div class="work-field"><b>Result</b>Clear visibility into every job's status, for everyone.</div>
-          <div class="work-tech">React · Node · Postgres</div>
+
+        <div class="case-card">
+          <div class="case-head">
+            <div>
+              <h3>Gaffar Vision</h3>
+              <span class="case-industry">Business services</span>
+            </div>
+            <span class="case-tag pending">Research in progress</span>
+          </div>
+          <div class="case-pending-body">Audit findings and proposed fixes are being documented — check back soon.</div>
         </div>
+
+        <div class="case-card">
+          <div class="case-head">
+            <div>
+              <h3>Chris And Gadget</h3>
+              <span class="case-industry">Gadget retail</span>
+            </div>
+            <span class="case-tag pending">Research in progress</span>
+          </div>
+          <div class="case-pending-body">Audit findings and proposed fixes are being documented — check back soon.</div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-head">
+            <div>
+              <h3>KOAM Star — XSTO Media</h3>
+              <span class="case-industry">TV production / entertainment</span>
+            </div>
+            <span class="case-tag pending">Research in progress</span>
+          </div>
+          <div class="case-pending-body">Audit findings and proposed fixes are being documented — check back soon.</div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1328,6 +1437,26 @@
       } else {
         item.classList.add('open');
         answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // case study accordion (only cards with an expandable body)
+  document.querySelectorAll('.case-card').forEach(card => {
+    const head = card.querySelector('.case-head');
+    const body = card.querySelector('.case-body');
+    if (!body) return; // pending cards have no expandable body
+    if (card.classList.contains('open')) {
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+    head.addEventListener('click', () => {
+      const isOpen = card.classList.contains('open');
+      if (isOpen) {
+        card.classList.remove('open');
+        body.style.maxHeight = null;
+      } else {
+        card.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
       }
     });
   });
