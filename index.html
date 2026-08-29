@@ -510,6 +510,106 @@
   .pkg-desc{color:var(--muted);font-size:0.94rem;flex-grow:1;}
   .pkg-card .btn{margin-top:6px;justify-content:center;}
 
+  /* ---------- REFERRAL ---------- */
+  .referral-section{background:var(--paper-dim);}
+  .referral-top{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:48px;
+    margin-bottom:56px;
+  }
+  @media(min-width:900px){ .referral-top{grid-template-columns:1.3fr 1fr;} }
+  .ref-steps{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  @media(min-width:640px){ .ref-steps{grid-template-columns:repeat(2,1fr);} }
+  .ref-step{display:flex;gap:14px;align-items:flex-start;}
+  .ref-step-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    color:var(--signal);
+    flex-shrink:0;
+    padding-top:2px;
+  }
+  .ref-step h4{font-size:1rem;font-weight:600;margin-bottom:6px;}
+  .ref-step p{font-size:0.9rem;color:var(--muted);}
+  .ref-who{
+    background:#fff;
+    border:1px solid var(--line-on-paper);
+    padding:28px;
+  }
+  .ref-who h4{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--muted);
+    margin-bottom:18px;
+  }
+  .ref-who ul{display:flex;flex-direction:column;gap:12px;}
+  .ref-who li{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.94rem;
+  }
+  .ref-who li:before{
+    content:"✓";
+    color:var(--signal);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.8rem;
+  }
+  .ref-tiers{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  @media(min-width:820px){ .ref-tiers{grid-template-columns:repeat(3,1fr);} }
+  .ref-tier{
+    background:var(--ink);
+    color:var(--paper);
+    padding:28px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .ref-tier-range{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--muted-on-ink);
+  }
+  .ref-tier-earn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--signal-soft);
+    margin-top:8px;
+  }
+  .ref-tier-amount{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:2.1rem;
+    font-weight:600;
+  }
+  .ref-note{
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.86rem;
+    color:var(--muted);
+  }
+  .ref-note .mark{
+    color:var(--signal);
+    font-family:'IBM Plex Mono',monospace;
+    flex-shrink:0;
+  }
+  .ref-cta{margin-top:32px;}
+
   /* ---------- FAQ ---------- */
   .faq-item{
     border-top:1px solid var(--line-on-paper);
@@ -709,6 +809,7 @@
       <a href="#services">Services</a>
       <a href="#work">Work</a>
       <a href="#process">Process</a>
+      <a href="#referral">Referral</a>
       <a href="#why">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -721,6 +822,7 @@
     <a href="#services">Services</a>
     <a href="#work">Work</a>
     <a href="#process">Process</a>
+    <a href="#referral">Referral</a>
     <a href="#why">About</a>
     <a href="#contact">Contact</a>
     <a href="#contact" class="nav-cta">Start a Project</a>
@@ -986,6 +1088,70 @@
     </div>
   </section>
 
+  <!-- REFERRAL -->
+  <section id="referral" class="referral-section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-eyebrow">Referral Program</span>
+        <h2>Know a business that needs this? Earn by introducing them.</h2>
+        <p>No technical skills required — just connect us with a business that needs a website, automation, or a digital system, and earn a reward once they become a paying client.</p>
+      </div>
+
+      <div class="referral-top reveal">
+        <div class="ref-steps">
+          <div class="ref-step">
+            <span class="ref-step-num">01</span>
+            <div><h4>Refer</h4><p>Introduce us to a business that needs a website or digital system.</p></div>
+          </div>
+          <div class="ref-step">
+            <span class="ref-step-num">02</span>
+            <div><h4>We Connect</h4><p>We talk with them, understand their needs, and send a proposal.</p></div>
+          </div>
+          <div class="ref-step">
+            <span class="ref-step-num">03</span>
+            <div><h4>They Hire Us</h4><p>They approve the project and make payment.</p></div>
+          </div>
+          <div class="ref-step">
+            <span class="ref-step-num">04</span>
+            <div><h4>You Earn</h4><p>You receive your referral reward once payment is completed.</p></div>
+          </div>
+        </div>
+        <div class="ref-who">
+          <h4>Who can join</h4>
+          <ul>
+            <li>Friends</li>
+            <li>Family</li>
+            <li>Students</li>
+            <li>Business owners</li>
+            <li>Anyone with a network</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ref-tiers reveal">
+        <div class="ref-tier">
+          <span class="ref-tier-range">Project value — $80 to $199</span>
+          <span class="ref-tier-earn">You earn</span>
+          <span class="ref-tier-amount">$10</span>
+        </div>
+        <div class="ref-tier">
+          <span class="ref-tier-range">Project value — $200 to $499</span>
+          <span class="ref-tier-earn">You earn</span>
+          <span class="ref-tier-amount">$25</span>
+        </div>
+        <div class="ref-tier">
+          <span class="ref-tier-range">Project value — $500+</span>
+          <span class="ref-tier-earn">You earn</span>
+          <span class="ref-tier-amount">5–10%</span>
+        </div>
+      </div>
+      <div class="ref-note reveal"><span class="mark">i</span>Rewards are paid after the client has completed payment. There's no limit to how many businesses you can refer.</div>
+      <div class="ref-cta reveal">
+        <a href="https://wa.me/2349129779286?text=Hi%2C%20I%27d%20like%20to%20refer%20a%20business%20to%20Provaxis." target="_blank" rel="noopener" class="btn btn-dark">Refer a Business →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section id="faq">
     <div class="wrap">
@@ -1101,6 +1267,7 @@
           <a href="#services">Services</a>
           <a href="#work">Work</a>
           <a href="#process">Process</a>
+          <a href="#referral">Referral</a>
         </div>
         <div class="footer-col">
           <span class="mono">Contact</span>
