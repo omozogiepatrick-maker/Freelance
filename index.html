@@ -445,6 +445,13 @@
     gap:28px;
   }
   @media(min-width:760px){ .case-body-inner{grid-template-columns:1fr 1fr;} }
+  .case-body-inner.single{grid-template-columns:1fr;}
+  .case-col p{
+    font-size:0.94rem;
+    color:var(--muted);
+    margin-bottom:16px;
+    max-width:60ch;
+  }
   .case-col-label{
     font-family:'IBM Plex Mono',monospace;
     font-size:0.7rem;
@@ -1247,26 +1254,60 @@
           <div class="case-source">Live demo: <a href="https://gaffarvision.netlify.app" target="_blank" rel="noopener">gaffarvision.netlify.app</a> — built August 2026.</div>
         </div>
 
-        <div class="case-card">
+        <div class="case-card" id="caseChrisGadget">
           <div class="case-head">
             <div>
               <h3>Chris And Gadget</h3>
-              <span class="case-industry">Gadget retail</span>
+              <span class="case-industry">Event decoration &amp; design</span>
             </div>
-            <span class="case-tag pending">Research in progress</span>
+            <span class="case-tag pending">Demo Sent — Awaiting Reply</span>
+            <span class="case-toggle">+</span>
           </div>
-          <div class="case-pending-body">Audit findings and proposed fixes are being documented — check back soon.</div>
+          <div class="case-body">
+            <div class="case-body-inner single">
+              <div class="case-col fix">
+                <span class="case-col-label">The outreach</span>
+                <p>Chris And Gadget had no website — their event decoration and design work had no single place to live online. Provaxis reached out cold, offering to build a free demo first: no commitment, no price discussion, just a working example they could look at and decide from.</p>
+                <span class="case-col-label">Current status</span>
+                <ul>
+                  <li>The pitch: a no-obligation demo built around showcasing their decorations, designs and past work, so potential clients could find and contact them online.</li>
+                  <li>They agreed, the demo was built and sent over.</li>
+                  <li>They've reviewed it — no reply yet on next steps.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="case-source">Live demo: <a href="https://chrisandgadgetdemo.netlify.app" target="_blank" rel="noopener">chrisandgadgetdemo.netlify.app</a> — sent to the client, awaiting reply, August 2026.</div>
         </div>
 
-        <div class="case-card">
+        <div class="case-card" id="caseXsto">
           <div class="case-head">
             <div>
               <h3>KOAM Star — XSTO Media</h3>
-              <span class="case-industry">TV production / entertainment</span>
+              <span class="case-industry">TV production &amp; entertainment</span>
             </div>
-            <span class="case-tag pending">Research in progress</span>
+            <span class="case-tag">In Production</span>
+            <span class="case-toggle">+</span>
           </div>
-          <div class="case-pending-body">Audit findings and proposed fixes are being documented — check back soon.</div>
+          <div class="case-body">
+            <div class="case-body-inner single">
+              <div class="case-col fix">
+                <span class="case-col-label">The role</span>
+                <p>KOAM Star's team needed someone to build and run the technical side of XSTO Media — not a one-off site, but an ongoing platform with real applicants and real data moving through it. This one is a running engagement, not a demo.</p>
+                <span class="case-col-label">What's running</span>
+                <ul>
+                  <li>Audition registration, so applicants can apply directly through the platform.</li>
+                  <li>Fan signups, building a mailing list of the show's audience.</li>
+                  <li>Application status lookup, so applicants can check where they stand without contacting the team directly.</li>
+                  <li>A Postgres database (Neon) holding all registration and applicant data.</li>
+                  <li>Transactional email (Resend) handling confirmations and status updates.</li>
+                  <li>Three serverless API routes powering registration, signups and status lookup end-to-end.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="case-why"><b>How this one's different</b>The audits and demos above are the pitch. This is what happens after — Provaxis builds and maintains the platform for KOAM Star on an ongoing basis, not a single delivery.</div>
+          <div class="case-source">Live platform: <a href="https://xstoproduction.vercel.app" target="_blank" rel="noopener">xstoproduction.vercel.app</a> — in active production, August 2026.</div>
         </div>
 
       </div>
