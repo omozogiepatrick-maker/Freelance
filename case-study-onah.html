@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Onah Client Acquisition Pilot | Provaxis</title>
+<meta name="description" content="A research-driven client acquisition and prospecting pilot built for Onah, a creative and branding studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10141F;
+    --paper:#F5F4EF;
+    --paper-dim:#EAE8E0;
+    --line:rgba(16,20,31,0.12);
+    --line-on-ink:rgba(245,244,239,0.14);
+    --signal:#4A5FEA;
+    --signal-soft:#DDE1FB;
+    --muted:#5B6072;
+    --muted-on-ink:#9AA1B8;
+    --maxw:920px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;margin:0;letter-spacing:-0.01em;line-height:1.1;}
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  .mono{font-family:'IBM Plex Mono',monospace;letter-spacing:0.04em;text-transform:uppercase;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  @media(min-width:900px){ .wrap{padding:0 40px;} }
+  img{max-width:100%;}
+
+  /* topbar */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,244,239,0.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .back-link{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:6px;}
+  .back-link:hover{color:var(--ink);}
+  .topbar-status{
+    font-family:'IBM Plex Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;
+    background:var(--signal-soft);color:var(--signal);padding:5px 10px;border-radius:2px;
+  }
+
+  /* hero */
+  .hero{background:var(--ink);color:var(--paper);padding:64px 0 48px;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--signal-soft);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+  .eyebrow .bar{width:24px;height:1px;background:var(--signal-soft);display:inline-block;}
+  .hero h1{font-size:2rem;font-weight:600;max-width:16ch;}
+  @media(min-width:640px){ .hero h1{font-size:2.6rem;} }
+  .hero p.lede{margin-top:20px;font-size:1.05rem;color:var(--muted-on-ink);max-width:56ch;}
+  .meta-grid{
+    margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:20px 32px;
+    padding-top:28px;border-top:1px solid var(--line-on-ink);
+  }
+  @media(min-width:640px){ .meta-grid{grid-template-columns:repeat(4,1fr);} }
+  .meta-label{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted-on-ink);margin-bottom:6px;display:block;}
+  .meta-value{font-size:0.95rem;font-weight:500;}
+
+  section{padding:64px 0;}
+  .section-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--signal);display:block;margin-bottom:12px;}
+  .section-head{max-width:640px;margin-bottom:36px;}
+  .section-head h2{font-size:1.6rem;font-weight:600;}
+  @media(min-width:640px){ .section-head h2{font-size:2rem;} }
+  .section-head p{margin-top:14px;color:var(--muted);font-size:1rem;}
+
+  /* challenge callout */
+  .bad-msg{
+    border:1px dashed var(--line);
+    padding:18px 20px;background:var(--paper-dim);color:var(--muted);
+    font-style:italic;font-size:0.95rem;margin-bottom:22px;
+  }
+  .bad-msg .mono{display:block;color:var(--muted);font-size:0.62rem;margin-bottom:8px;font-style:normal;}
+  .reframe{
+    border-left:3px solid var(--signal);padding:18px 20px;background:#fff;font-size:1.02rem;font-weight:500;
+  }
+  .reframe .mono{display:block;color:var(--signal);font-size:0.62rem;margin-bottom:8px;}
+  .arrow-vs{text-align:center;font-family:'IBM Plex Mono',monospace;color:var(--muted);font-size:0.8rem;margin:14px 0;}
+
+  /* framework cards */
+  .framework-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(min-width:640px){ .framework-grid{grid-template-columns:1fr 1fr;} }
+  .framework-card{background:#fff;padding:26px;}
+  .framework-num{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--signal);margin-bottom:10px;display:block;}
+  .framework-card h3{font-size:1.05rem;font-weight:600;margin-bottom:8px;}
+  .framework-card p{font-size:0.9rem;color:var(--muted);}
+
+  /* pipeline */
+  .pipeline{position:relative;padding-left:36px;}
+  .pipeline:before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:1px;background:var(--line);}
+  .pipeline-step{position:relative;padding-bottom:26px;}
+  .pipeline-step:last-child{padding-bottom:0;}
+  .pipeline-dot{
+    position:absolute;left:-36px;top:2px;width:23px;height:23px;border-radius:50%;
+    background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace;font-size:0.62rem;
+  }
+  .pipeline-step h4{font-size:0.98rem;font-weight:600;}
+  .pipeline-step p{font-size:0.86rem;color:var(--muted);margin-top:4px;}
+
+  /* signals */
+  .signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(min-width:640px){ .signal-grid{grid-template-columns:repeat(3,1fr);} }
+  .signal-chip{
+    border:1px solid var(--line);padding:16px;font-size:0.86rem;background:#fff;
+  }
+
+  /* outreach flow */
+  .flow-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;}
+  .flow-node{
+    background:var(--ink);color:var(--paper);padding:12px 18px;font-family:'IBM Plex Mono',monospace;
+    font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;border-radius:2px;
+  }
+  .flow-arrow{color:var(--muted);font-family:'IBM Plex Mono',monospace;}
+  .flow-note{margin-top:20px;font-size:0.92rem;color:var(--muted);max-width:56ch;}
+
+  /* results */
+  .result-card{border:1px solid var(--line);background:#fff;padding:24px;margin-bottom:16px;}
+  .result-card h4{font-size:1rem;font-weight:600;margin-bottom:10px;}
+  .result-card p{font-size:0.92rem;color:var(--muted);}
+  .result-tag{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.64rem;text-transform:uppercase;
+    letter-spacing:0.05em;background:var(--signal-soft);color:var(--signal);padding:4px 8px;border-radius:2px;margin-bottom:12px;
+  }
+  .quote-block{
+    border-left:3px solid var(--signal);padding:16px 20px;background:var(--paper-dim);font-size:0.98rem;font-style:italic;margin-top:8px;
+  }
+
+  /* insights */
+  .insight-grid{display:grid;grid-template-columns:1fr;gap:20px;}
+  @media(min-width:700px){ .insight-grid{grid-template-columns:1fr 1fr;} }
+  .insight-card{padding:22px 0;border-top:1px solid var(--line);}
+  .insight-num{font-family:'IBM Plex Mono',monospace;color:var(--signal);font-size:0.8rem;}
+  .insight-card h4{font-size:1.02rem;font-weight:600;margin:8px 0;}
+  .insight-card p{font-size:0.9rem;color:var(--muted);}
+
+  /* next */
+  .next-list li{
+    display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);font-size:0.94rem;
+  }
+  .next-list li:before{content:"→";color:var(--signal);font-family:'IBM Plex Mono',monospace;flex-shrink:0;}
+  .next-list{border-bottom:1px solid var(--line);}
+
+  /* status banner */
+  .status-banner{background:var(--ink);color:var(--paper);text-align:center;padding:72px 0;}
+  .status-tag{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.75rem;text-transform:uppercase;
+    letter-spacing:0.08em;background:var(--signal);color:#fff;padding:8px 16px;border-radius:2px;margin-bottom:22px;
+  }
+  .status-banner h2{font-size:1.6rem;font-weight:600;max-width:34ch;margin:0 auto;}
+  @media(min-width:640px){ .status-banner h2{font-size:2rem;} }
+  .status-banner p{margin-top:16px;color:var(--muted-on-ink);max-width:52ch;margin-left:auto;margin-right:auto;font-size:0.98rem;}
+
+  footer{padding:40px 0;text-align:center;}
+  .footer-cta{
+    display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:0.8rem;
+    text-transform:uppercase;letter-spacing:0.04em;background:var(--ink);color:var(--paper);padding:14px 22px;border-radius:2px;
+  }
+  .footer-cta:hover{background:var(--signal);}
+  .footer-note{margin-top:16px;font-size:0.85rem;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="index.html#work" class="back-link">← Back to Provaxis</a>
+    <span class="topbar-status">Active Pilot</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="bar"></span>Case Study — Client Acquisition &amp; Prospecting</span>
+    <h1>Building a research-driven acquisition system for Onah.</h1>
+    <p class="lede">A 2-week pilot testing whether personalized, trigger-based outreach creates more meaningful business conversations than generic cold messaging.</p>
+    <div class="meta-grid">
+      <div><span class="meta-label">Client</span><span class="meta-value">Onah — Creative &amp; Branding Studio</span></div>
+      <div><span class="meta-label">Duration</span><span class="meta-value">2-week pilot</span></div>
+      <div><span class="meta-label">Scope</span><span class="meta-value">Prospecting system + outreach</span></div>
+      <div><span class="meta-label">Status</span><span class="meta-value">Active Pilot</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="overview">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Project overview</span>
+      <h2>Fewer messages, better reasons to send them.</h2>
+      <p>Onah wanted to reach companies and brands that could genuinely benefit from creative, branding and visual communication work. Rather than sending generic messages at volume, we built a structured system to find the right companies, understand what was actually happening in their business, and start conversations grounded in something real.</p>
+    </div>
+  </div>
+</section>
+
+<section id="challenge" style="background:var(--paper-dim);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">The challenge</span>
+      <h2>Generic outreach gives a prospect no reason to reply.</h2>
+      <p>Most cold outreach follows the same pattern — and most of it gets ignored.</p>
+    </div>
+    <div class="bad-msg">
+      <span class="mono">Typical cold message</span>
+      "Hi, we offer branding services. Would you like to work with us?"
+    </div>
+    <div class="arrow-vs">instead, we asked a different question</div>
+    <div class="reframe">
+      <span class="mono">Our starting question</span>
+      "Which businesses are currently experiencing something where creative communication could genuinely help?"
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Our approach</span>
+      <h2>A structured prospecting framework, not a mailing list.</h2>
+      <p>Every prospect passed through the same six-stage process before a single message was sent.</p>
+    </div>
+    <div class="framework-grid">
+      <div class="framework-card">
+        <span class="framework-num">01</span>
+        <h3>Market Research</h3>
+        <p>Identify industries and businesses that fit Onah's creative capabilities — starting with consumer brands and fashion, later expanding into technology companies.</p>
+      </div>
+      <div class="framework-card">
+        <span class="framework-num">02</span>
+        <h3>Prospect Qualification</h3>
+        <p>Every company was checked for a genuine trigger, real value fit, and a legitimate contact route before being added to the list.</p>
+      </div>
+      <div class="framework-card">
+        <span class="framework-num">03</span>
+        <h3>Deep Company Research</h3>
+        <p>Background, products, positioning, recent developments and expansion activity — researched individually, not scraped in bulk.</p>
+      </div>
+      <div class="framework-card">
+        <span class="framework-num">04</span>
+        <h3>Trigger-Based Outreach</h3>
+        <p>Each message was built around something specific happening in the company — a launch, an expansion, a repositioning.</p>
+      </div>
+      <div class="framework-card">
+        <span class="framework-num">05</span>
+        <h3>Decision-Maker Identification</h3>
+        <p>Founders, CEOs, marketing directors and brand or growth leads — reached through legitimate public channels only.</p>
+      </div>
+      <div class="framework-card">
+        <span class="framework-num">06</span>
+        <h3>Personalized Outreach</h3>
+        <p>Every message followed the same arc: observation → business context → opportunity → value → conversation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pipeline" style="background:var(--paper-dim);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">The pipeline</span>
+      <h2>From discovery to project, in one repeatable flow.</h2>
+    </div>
+    <div class="pipeline">
+      <div class="pipeline-step"><span class="pipeline-dot">01</span><h4>Lead Discovery</h4><p>Identify companies worth researching further.</p></div>
+      <div class="pipeline-step"><span class="pipeline-dot">02</span><h4>Initial Qualification</h4><p>Filter for genuine fit before investing research time.</p></div>
+      <div class="pipeline-step"><span class="pipeline-dot">03</span><h4>Deep Research</h4><p>Understand the company's business and market position.</p></div>
+      <div class="pipeline-step"><span class="pipeline-dot">04</span><h4>Identify Business Trigger</h4><p>Find the real reason a conversation makes sense now.</p></div>
+      <div class="pipeline-step"><span class="pipeline-dot">05</span><h4>Identify Decision Maker</h4><p>Find the right person to reach, not just any contact.</p></div>
+      <div class="pipeline-step"><span class="pipeline-dot">06</span><h4>Verify Contact Route</h4><p>Confirm a legitimate, public way to reach them.</p></div>
+      <div class="pipeline-step"><span class="pipeline-dot">07</span><h4>Personalized Outreach</h4><p>Send a message built around their specific situation.</p></div>
+      <div class="pipeline-step"><span class="pipeline-dot">08</span><h4>Track Response</h4><p>Monitor what comes back, and from whom.</p></div>
+      <div class="pipeline-step"><span class="pipeline-dot">09</span><h4>Follow-Up</h4><p>Continue the conversation where there's genuine interest.</p></div>
+      <div class="pipeline-step"><span class="pipeline-dot">10</span><h4>Opportunity Discovery</h4><p>Understand the need behind the reply.</p></div>
+      <div class="pipeline-step"><span class="pipeline-dot">11</span><h4>Proposal / Project</h4><p>Turn a genuine opportunity into a scoped piece of work.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="signals">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Example opportunity signals</span>
+      <h2>What makes a company worth contacting.</h2>
+      <p>Instead of asking "who can we sell to," we looked for businesses already experiencing one of these.</p>
+    </div>
+    <div class="signal-grid">
+      <div class="signal-chip">New product launch</div>
+      <div class="signal-chip">Company expansion</div>
+      <div class="signal-chip">Rebranding</div>
+      <div class="signal-chip">New market positioning</div>
+      <div class="signal-chip">Product evolution</div>
+      <div class="signal-chip">New campaigns</div>
+      <div class="signal-chip">Growing companies</div>
+      <div class="signal-chip">Complex products needing clearer communication</div>
+      <div class="signal-chip">Standing out in a competitive market</div>
+    </div>
+  </div>
+</section>
+
+<section id="outreach" style="background:var(--paper-dim);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Outreach strategy</span>
+      <h2>Start with observation, not a pitch.</h2>
+    </div>
+    <div class="flow-row">
+      <span class="flow-node">Observation</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Business Context</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Opportunity</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Value</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Conversation</span>
+    </div>
+    <p class="flow-note">Every message followed this arc rather than opening with a service pitch — the goal was to demonstrate that we understood the business before asking for anything.</p>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Early results</span>
+      <h2>Signals, not conclusions — this is still an active pilot.</h2>
+    </div>
+    <div class="result-card">
+      <span class="result-tag">Batch 1 — Consumer &amp; Fashion</span>
+      <h4>Five carefully researched companies</h4>
+      <p>One prospect responded positively and indicated they would revert — an early warm lead that helped validate the approach.</p>
+    </div>
+    <div class="result-card">
+      <span class="result-tag">Batch 2 — Technology</span>
+      <h4>A second batch, selected by specific business developments</h4>
+      <p>Several personalized messages were prepared and sent to qualified technology companies. Responses are still being monitored.</p>
+    </div>
+    <div class="quote-block">No client has been secured yet. This is presented as an active pilot and an ongoing experiment — not a finished result.</div>
+  </div>
+</section>
+
+<section id="insights" style="background:var(--paper-dim);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Key insights</span>
+      <h2>What the pilot has taught us so far.</h2>
+    </div>
+    <div class="insight-grid">
+      <div class="insight-card">
+        <span class="insight-num">01</span>
+        <h4>Research beats volume</h4>
+        <p>Ten messages built on genuine research can outperform a hundred generic ones.</p>
+      </div>
+      <div class="insight-card">
+        <span class="insight-num">02</span>
+        <h4>A trigger creates a real reason to reach out</h4>
+        <p>The strongest messages were tied to something actually happening — a launch, an expansion, a repositioning, a growth moment.</p>
+      </div>
+      <div class="insight-card">
+        <span class="insight-num">03</span>
+        <h4>The goal is conversation, not reply</h4>
+        <p>A reply is only the first step. The real objective runs: reply → conversation → understand need → identify opportunity → proposal → project.</p>
+      </div>
+      <div class="insight-card">
+        <span class="insight-num">04</span>
+        <h4>Different industries need testing</h4>
+        <p>Rather than assuming one market is the best fit, we're testing multiple categories to find where Onah's services create the strongest opportunities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="next">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">What's next</span>
+      <h2>The system continues to evolve.</h2>
+    </div>
+    <ul class="next-list">
+      <li>Using lead-finder tools to discover larger pools of qualified companies</li>
+      <li>Building industry-specific prospecting campaigns</li>
+      <li>Developing a prospect scoring system</li>
+      <li>Tracking response and conversion rates over time</li>
+      <li>Testing different outreach angles</li>
+      <li>Improving the follow-up system</li>
+      <li>Identifying the industries where Onah performs best</li>
+    </ul>
+  </div>
+</section>
+
+<section class="status-banner">
+  <div class="wrap">
+    <span class="status-tag">Status: Active Pilot</span>
+    <h2>This project is ongoing.</h2>
+    <p>The objective is to continuously learn from real market responses and improve the client acquisition system based on evidence — not assumptions.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html#contact" class="footer-cta">Start a Project →</a>
+    <p class="footer-note">A Provaxis case study — growth &amp; prospecting systems.</p>
+  </div>
+</footer>
+
+</body>
+</html>

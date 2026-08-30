@@ -572,6 +572,22 @@
     font-weight:500;
   }
   .case-source a{color:var(--signal);text-decoration:underline;}
+  .case-full-link{
+    margin:0 26px 26px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    background:var(--ink);
+    color:var(--paper);
+    padding:12px 18px;
+    border-radius:2px;
+    transition:background 0.15s;
+  }
+  .case-full-link:hover{background:var(--signal);}
 
   /* ---------- PROCESS ---------- */
   .process-grid{
@@ -1308,6 +1324,31 @@
           </div>
           <div class="case-why"><b>How this one's different</b>The audits and demos above are the pitch. This is what happens after — Provaxis builds and maintains the platform for KOAM Star on an ongoing basis, not a single delivery.</div>
           <div class="case-source">Live platform: <a href="https://xstoproduction.vercel.app" target="_blank" rel="noopener">xstoproduction.vercel.app</a> — in active production, August 2026.</div>
+        </div>
+
+        <div class="case-card" id="caseOnah">
+          <div class="case-head">
+            <div>
+              <h3>Onah</h3>
+              <span class="case-industry">Creative &amp; branding studio — client acquisition pilot</span>
+            </div>
+            <span class="case-tag">Active Pilot</span>
+            <span class="case-toggle">+</span>
+          </div>
+          <div class="case-body">
+            <div class="case-body-inner single">
+              <div class="case-col fix">
+                <span class="case-col-label">The short version</span>
+                <p>A 2-week pilot testing whether personalized, research-driven outreach creates more meaningful business conversations than generic cold messaging — built for Onah, a creative and branding studio, to find companies actually experiencing a moment where creative communication could help.</p>
+                <ul>
+                  <li>A 6-stage prospecting framework, from market research through to personalized, trigger-based outreach.</li>
+                  <li>An 11-step pipeline from lead discovery to proposal.</li>
+                  <li>First batch: one early warm lead from five researched companies. Second batch of technology companies is still being monitored — no client secured yet.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <a href="case-study-onah.html" class="case-full-link">Read the full case study →</a>
         </div>
 
       </div>
