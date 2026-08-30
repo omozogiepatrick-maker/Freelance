@@ -484,6 +484,87 @@
     font-size:0.9rem;
     color:var(--muted);
   }
+  .case-next{
+    margin:0 26px;
+    padding:24px 0 30px;
+    border-top:1px solid var(--line-on-paper);
+  }
+  .case-next-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink);
+    margin-bottom:6px;
+    display:block;
+  }
+  .case-next-sub{
+    font-size:0.88rem;
+    color:var(--muted);
+    margin-bottom:20px;
+    max-width:56ch;
+  }
+  .case-phases{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  @media(min-width:640px){ .case-phases{grid-template-columns:1fr 1fr;} }
+  .case-phase{
+    background:var(--paper-dim);
+    padding:20px;
+  }
+  .case-phase.proposed{background:var(--ink);color:var(--paper);}
+  .case-phase-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--signal);
+    margin-bottom:12px;
+    display:block;
+  }
+  .case-phase.proposed .case-phase-tag{color:var(--signal-soft);}
+  .case-phase ul{display:flex;flex-direction:column;gap:9px;}
+  .case-phase li{
+    font-size:0.86rem;
+    padding-left:16px;
+    position:relative;
+  }
+  .case-phase li:before{
+    content:"·";
+    position:absolute;left:0;
+    color:var(--signal);
+    font-weight:700;
+  }
+  .case-phase.proposed li:before{color:var(--signal-soft);}
+  .case-demo-note{
+    margin:0 26px 26px;
+    padding:14px 16px;
+    background:var(--signal-soft);
+    color:var(--signal);
+    font-size:0.84rem;
+  }
+  .case-why{
+    margin:0 26px 26px;
+    padding:20px 22px;
+    border-left:3px solid var(--signal);
+    background:var(--paper-dim);
+    font-size:0.94rem;
+    color:var(--ink);
+    line-height:1.6;
+  }
+  .case-why b{
+    display:block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--signal);
+    margin-bottom:8px;
+    font-weight:500;
+  }
+  .case-source a{color:var(--signal);text-decoration:underline;}
 
   /* ---------- PROCESS ---------- */
   .process-grid{
@@ -1037,7 +1118,7 @@
               <h3>SEE Lagos</h3>
               <span class="case-industry">Restaurant &amp; lounge — Lekki Phase 1, Lagos</span>
             </div>
-            <span class="case-tag">Live Audit</span>
+            <span class="case-tag">Live Demo</span>
             <span class="case-toggle">+</span>
           </div>
           <div class="case-body">
@@ -1054,7 +1135,7 @@
                 </ul>
               </div>
               <div class="case-col fix">
-                <span class="case-col-label">What needs to change</span>
+                <span class="case-col-label">What we built</span>
                 <ul>
                   <li>One menu system with real content limits, so names and prices display fully on every screen size.</li>
                   <li>A single source of truth for hours and menu pricing, synced everywhere it's shown instead of edited in two places.</li>
@@ -1065,29 +1146,105 @@
               </div>
             </div>
           </div>
-          <div class="case-source">Source: public listings on Google Business Profile and the live menu at app.mulle.ee/qr/seelifest, reviewed August 2026.</div>
+          <div class="case-source">Live demo: <a href="https://seelagoesdemo.netlify.app" target="_blank" rel="noopener">seelagoesdemo.netlify.app</a> · Original site audited at app.mulle.ee/qr/seelifest, reviewed August 2026.</div>
         </div>
 
-        <div class="case-card">
+        <div class="case-card" id="caseMapleLagos">
           <div class="case-head">
             <div>
               <h3>Maple Lagos</h3>
-              <span class="case-industry">Restaurant</span>
+              <span class="case-industry">Restaurant, bar &amp; wine lounge — Lagos</span>
             </div>
-            <span class="case-tag pending">Research in progress</span>
+            <span class="case-tag">Live Demo</span>
+            <span class="case-toggle">+</span>
           </div>
-          <div class="case-pending-body">Audit findings and proposed fixes are being documented — check back soon.</div>
+          <div class="case-body">
+            <div class="case-body-inner">
+              <div class="case-col research">
+                <span class="case-col-label">What was wrong</span>
+                <ul>
+                  <li>The homepage is a black screen with just the logo — no menu, no hours, nothing else visible.</li>
+                  <li>Everything else sits behind a hamburger icon, leading to a bare 4-link menu page, where each link opens its own long, separately-loading scroll.</li>
+                  <li>Every price is missing three zeros — a shot of Jameson shows as ₦7.2 instead of ₦7,200. It runs through food, bar and wine, so it's a systemic export bug, not a typo.</li>
+                  <li>Two clashing brand looks — black/gold on the homepage, cream/green script on the menu pages — read like two different businesses.</li>
+                  <li>No visible hours, address, or way to book a table anywhere on the site.</li>
+                </ul>
+              </div>
+              <div class="case-col fix">
+                <span class="case-col-label">What we built</span>
+                <ul>
+                  <li>One page, four tabs — Food, Bar, Wine, Dessert — with sub-filters. No hamburger, no reloading between categories.</li>
+                  <li>Every price corrected and comma-formatted, with the pricing bug called out directly in the hero as the opening hook.</li>
+                  <li>One unified visual identity pulling from their real brand — the black and gold, plus the forest green from their actual menu type.</li>
+                  <li>A live before/after comparison section, so visitors can see exactly what changed and why.</li>
+                  <li>A working reservation form.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="case-demo-note">Contact details (address, phone, booking line) don't exist anywhere on the current site — the demo shows an honest placeholder for these rather than inventing them.</div>
+          <div class="case-next">
+            <span class="case-next-label">What's next</span>
+            <p class="case-next-sub">The demo is Phase 1. The pitch is a second phase that turns the fix into an ongoing system.</p>
+            <div class="case-phases">
+              <div class="case-phase">
+                <span class="case-phase-tag">Phase 1 — This demo</span>
+                <ul>
+                  <li>Single-page menu with working tabs and filters</li>
+                  <li>Corrected, comma-formatted pricing</li>
+                  <li>One unified brand identity</li>
+                  <li>Reservation form</li>
+                </ul>
+              </div>
+              <div class="case-phase proposed">
+                <span class="case-phase-tag">Phase 2 — Proposed</span>
+                <ul>
+                  <li>One dashboard to update the menu everywhere at once</li>
+                  <li>Automatic checks that would've caught the ₦7.2 bug before it went live</li>
+                  <li>An AI concierge chat widget for guest questions</li>
+                  <li>WhatsApp and Instagram unified into one inbox</li>
+                  <li>Time-of-day smart menu switching (breakfast → lunch → dinner)</li>
+                  <li>A single view for reviews across platforms</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="case-source">Live demo: <a href="https://maplelagoesdemo.netlify.app" target="_blank" rel="noopener">maplelagoesdemo.netlify.app</a> · Original site audited at maplelagos.com, reviewed August 2026.</div>
         </div>
 
-        <div class="case-card">
+        <div class="case-card" id="caseGaffarVision">
           <div class="case-head">
             <div>
               <h3>Gaffar Vision</h3>
-              <span class="case-industry">Business services</span>
+              <span class="case-industry">Graphic design &amp; visual communication — freelance</span>
             </div>
-            <span class="case-tag pending">Research in progress</span>
+            <span class="case-tag">Live Demo</span>
+            <span class="case-toggle">+</span>
           </div>
-          <div class="case-pending-body">Audit findings and proposed fixes are being documented — check back soon.</div>
+          <div class="case-body">
+            <div class="case-body-inner">
+              <div class="case-col research">
+                <span class="case-col-label">The gap</span>
+                <ul>
+                  <li>No website at all — a prospective client had nothing to check before reaching out.</li>
+                  <li>Real design work lived scattered across a phone and social posts, with no single place showing the full range of services.</li>
+                  <li>No consistent way for a stranger to find, compare, or trust the work at a glance.</li>
+                </ul>
+              </div>
+              <div class="case-col fix">
+                <span class="case-col-label">What we built</span>
+                <ul>
+                  <li>A single-page portfolio site covering six services — Brand Identity, Social Media Design, Marketing &amp; Advertising, UI/Digital Graphics, Print Design, and Custom Design.</li>
+                  <li>A real portfolio section featuring actual design work, including branding and print pieces.</li>
+                  <li>A clear four-step process — Discover, Concept, Design, Deliver — so a new client knows what working together looks like.</li>
+                  <li>One-tap contact across WhatsApp, call, email, Instagram, Facebook, X and Behance, so a lead never has to search for how to reach him.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="case-why"><b>Why it matters</b>Most people no longer decide whether a business is real by visiting in person — they decide by searching. For a solo creative with genuine skill, a search that returns nothing reads the same as not existing. This demo turns invisible work into visible proof.</div>
+          <div class="case-demo-note">Testimonial quotes are left as clearly-labeled placeholders in the live demo, ready to be swapped for real client feedback rather than invented.</div>
+          <div class="case-source">Live demo: <a href="https://gaffarvision.netlify.app" target="_blank" rel="noopener">gaffarvision.netlify.app</a> — built August 2026.</div>
         </div>
 
         <div class="case-card">
